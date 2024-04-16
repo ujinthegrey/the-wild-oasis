@@ -16,13 +16,23 @@ const Section = styled.section`
     padding: 4rem 4.8rem 6.4rem;
 `
 
+const Container = styled.div`
+  max-width: 90rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+`
+
 function AppLayout() {
   return (
     <StyledAppLayout>
         <Sidebar />
         <Header />
         <Section>
+          <Container>
             <Outlet />
+          </Container>
         </Section>
     </StyledAppLayout>
   )

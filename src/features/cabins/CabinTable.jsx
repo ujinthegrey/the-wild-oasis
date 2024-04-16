@@ -39,7 +39,7 @@ function CabinTable() {
     queryFn: getCabins,
   })
 
-  console.log(error || 'no errors yet')
+  if (error) console.log(error)
 
 
   if (isLoading) return <Spinner/>
