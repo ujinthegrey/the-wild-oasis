@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
@@ -19,15 +20,15 @@ function CreateCabinForm() {
     mutationFn: createCabin,
     onSuccess: () => {
       toast.success('New cabin successfully created!')
+      reset()
       QueryClient.invalidateQueries({
         queryKey: ['cabins']
       })
-      reset()
     }
   })
 
   function onSubmit(data) {
-    mutate(data)
+    mutate({...data, image: data.image[0]})
   }
 
   function onError(errors) {
@@ -104,7 +105,10 @@ function CreateCabinForm() {
         <FileInput
           id="image"
           accept="image/*"
-          disabled={isCreating}  
+          disabled={isCreating}
+        {...register("image", {
+          required: "This field is required",
+        })}  
         />
       </FormRow>
 
