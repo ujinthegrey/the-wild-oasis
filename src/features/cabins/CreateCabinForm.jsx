@@ -30,7 +30,6 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   })
   const { errors } = formState
   
-
   function onSubmit(data) {
     const image = typeof(data.image) === 'string'
       ? data.image
