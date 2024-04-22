@@ -1,4 +1,4 @@
-import supabase, { supabaseUrl }  from "./supabase,js"
+import supabase, { supabaseUrl }  from "./supabase"
 
 export async function getCabins() {
     const { data, error } = await supabase
@@ -13,7 +13,7 @@ export async function getCabins() {
     return data
 }
 
-export async function createEditCabin(newCabin, id) {
+export async function createUpdateCabin(newCabin, id) {
     const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl)
 
     const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll(
@@ -24,14 +24,14 @@ export async function createEditCabin(newCabin, id) {
 
     // https://fkctegvunlfbfihtlbeb.supabase.co/storage/v1/object/public/cabin-images/cabin-008.jpg
 
-    // Create or Edit a Cabin
+    // Create or Update a Cabin
     let query = supabase.from('cabins')
 
     // Create New Cabin
     if (!id) query = query
         .insert([{ ...newCabin, image: imagePath }])
 
-    // Edit a Cabin
+    // Update a Cabin
     if (id) query = query
         .update({ ...newCabin, image: imagePath })
         .eq('id', id)
