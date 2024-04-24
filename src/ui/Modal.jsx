@@ -22,12 +22,12 @@ const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   background-color: var(--backdrop-color);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
   z-index: 1000;
-  transition: all 0.5s;
+  transition: all 0.3s;
 `;
 
 const Button = styled.button`
