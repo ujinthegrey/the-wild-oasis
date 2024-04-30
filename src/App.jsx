@@ -15,6 +15,7 @@ import Users from "./pages/Users"
 import AppLayout from "./ui/AppLayout"
 import Booking from "./pages/Booking"
 import Checkin from './pages/Checkin'
+import ProtectedRoute from "./ui/ProtectedRoute"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +33,7 @@ function App() {
         <BrowserRouter>
           <Routes>
 
-            <Route element={<AppLayout />}>
+            <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
               <Route index element={ <Navigate replace to='dashboard' /> }/>
               <Route path='account' element={ <Account/> }/>
               <Route path='bookings' element={ <Bookings/> }/>
