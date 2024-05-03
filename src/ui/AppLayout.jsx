@@ -12,7 +12,7 @@ const StyledAppLayout = styled.div`
 `
 
 const Section = styled.section`
-    background-color: var(color-grey-50);
+    background-color: var(--color-grey-0);
     padding: 4rem 4.8rem 6.4rem;
     overflow: scroll;
 `
