@@ -1,14 +1,15 @@
 /* eslint-disable */
-import styled from "styled-components";
-import { useRecentBookings } from "./useResentBookings";
+import styled from "styled-components"
+
+import { useRecentBookings } from "./useResentBookings"
+import { useCabins } from '../cabins/useCabins'
+import { useRecentStays } from "./useResentStays"
 
 import Spinner from '../../ui/Spinner'
 import Stats from './Stats'
-
-import { useRecentStays } from "./useResentStays";
-import { useCabins } from '../cabins/useCabins'
-import SalesChart from "./SalesChart";
-import DurationChart from "./DurationChart";
+import SalesChart from "./SalesChart"
+import DurationChart from "./DurationChart"
+import TodayActivity from '../check-in-out/TodayActivity'
 
 const StyledDashboardLayout = styled.div`
   display: grid;
@@ -18,7 +19,6 @@ const StyledDashboardLayout = styled.div`
 `;
 
 function DashboardLayout() {
-
   const {isLoading, bookings} = useRecentBookings()
   const {isLoading: isLoadingStays, stays, confirmedStays, numDays} = useRecentStays()
   const {cabins, isLoading: isLoadingCabins} = useCabins()
@@ -27,16 +27,16 @@ function DashboardLayout() {
 
   return (
     <StyledDashboardLayout>
-      <Stats 
-        bookings={bookings} 
-        confirmedStays={confirmedStays} 
+      <Stats
+        bookings={bookings}
+        confirmedStays={confirmedStays}
         numDays={numDays}
-        cabinCount={cabins.length}  
+        cabinCount={cabins.length}
       />
-      <div>Today&#39;s Activitiy</div>
-      <DurationChart  confirmedStays={confirmedStays}/>
-      <SalesChart bookings={bookings} numDays={numDays}/>
-  </StyledDashboardLayout>
+      <TodayActivity />
+      <DurationChart confirmedStays={confirmedStays} />
+      <SalesChart bookings={bookings} numDays={numDays} />
+    </StyledDashboardLayout>
   )
 }
 
