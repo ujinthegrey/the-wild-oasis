@@ -10,6 +10,7 @@ import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
 import Spinner from '../../ui/Spinner'
 import Modal from '../../ui/Modal'
+import Empty from '../../ui/Empty'
 
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
@@ -34,6 +35,7 @@ function BookingDetail() {
   const moveBack = useMoveBack();
 
   if (isLoading) return <Spinner />
+  if (!booking) return <Empty resourceName="booking" />
 
   const { status, id: bookingId } = booking
 
